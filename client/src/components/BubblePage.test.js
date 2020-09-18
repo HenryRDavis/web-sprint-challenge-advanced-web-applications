@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
-const testColors = () => {
-  axiosWithAuth()
-      .get("/api/colors")
-      .then(res => 
-        setColorList(res.data)
-        )
-      .catch(err => 
-      console.log(err.response.data))
-};
+useEffect(() => {
+    axiosWithAuth()
+    .get('/api/colors')
+    .then(res => {
+      setColorList(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
 
-let getColors = testColors()
+let getColors = useEffect()
 
 jest.mock(getColors)
 
